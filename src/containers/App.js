@@ -4,8 +4,9 @@ import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom
 import Public from '../components/Public'
 import Login from '../components/Login'
 import Private from '../components/Private'
+import Secret from '../components/Secret'
 
-const fakeAuth = {
+export const fakeAuth = {
     isAuthenticated: false,
     authenticate(cb) {
         this.isAuthenticated = true
@@ -31,6 +32,7 @@ export class App extends Component {
                     <ul>
                         <li><Link to="/public">Public</Link></li>
                         <li><Link to="/private">Private</Link></li>
+                        <li><Link to="/secret">Secret</Link></li>
                     </ul>
 
                     <Route path="/public" component={Public} />
@@ -38,6 +40,7 @@ export class App extends Component {
                     <Route path="/login" component={Login} />
 
                     <PrivateRoute path="/private" component={Private} />
+                    <PrivateRoute path="/secret" component={Secret} />
                 </div>
             </Router>
         )
