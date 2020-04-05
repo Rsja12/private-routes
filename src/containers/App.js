@@ -20,7 +20,13 @@ export const fakeAuth = {
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} render={ (props) => (
-        fakeAuth.isAuthenticated === true ? <Component {...props} /> : <Redirect to="login" />
+        fakeAuth.isAuthenticated === true ? 
+        <Component {...props} /> 
+        : <Redirect to={{
+            // allows us to redirect user to page they wanted to go to once they are authenticated
+            pathname: '/login',
+            state: { from: props.location }
+        }} />
     )} />
 )
 

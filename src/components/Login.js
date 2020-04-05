@@ -20,17 +20,18 @@ export class Login extends Component {
     render() {
 
         const { redirectToReferrer } = this.state
+        const { from } = this.props.location.state || { from: { pathname: '/' } }
 
         if (redirectToReferrer === true) {
             return (
-                <Redirect to="/" />
+                <Redirect to={ from } />
             )
         }
 
         return (
             <div>
                 <p>You must be logged in to view this page</p>
-                <button onClick={this.login}>Click Me</button>
+                <button onClick={this.login}>Log in</button>
             </div>
         )
     }
